@@ -1,0 +1,6 @@
+{
+    "conventionalCommits.scopes": [
+        "configuration api on progress",
+        "success create databse and migrate and seed database"
+    ]
+}
