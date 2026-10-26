@@ -23,6 +23,7 @@ export default function LoginPage() {
     try {
       const res = await authApi.login({ email, password });
       const token = res.data.token;
+      console.log(res);
       saveToken(token);
       setAuth({ token });
       navigate("/assessments");
@@ -34,11 +35,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="flex items-center justify-center min-h-screen bg-background">
       <div className="w-full max-w-sm space-y-6">
         <div className="text-center">
           <h1 className="text-2xl font-bold">AI Interview</h1>
-          <p className="text-sm text-muted-foreground mt-1">Sign in to your account</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Sign in to your account
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -69,11 +72,10 @@ export default function LoginPage() {
           {error && <p className="text-sm text-destructive">{error}</p>}
 
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+            {loading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
             Sign in
           </Button>
         </form>
-
       </div>
     </div>
   );
